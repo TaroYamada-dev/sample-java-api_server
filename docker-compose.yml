@@ -1,0 +1,12 @@
+version: "3.5"
+services:
+  score_server:
+    build: .
+    container_name: score_server
+    image: score_server
+    ports:
+      - 8080:8080
+    volumes:
+      - ./spring_project:/opt/spring_project
+      - ./sqlitesample.db:/opt/sqlitesample.db
+    tty: true
