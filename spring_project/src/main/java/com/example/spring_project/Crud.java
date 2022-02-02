@@ -18,20 +18,20 @@ public class Crud {
         try {
             connection = DriverManager.getConnection(URL);
             Statement statement = connection.createStatement();
-            statement.setQueryTimeout(30);  // set timeout to 30 sec.
+            statement.setQueryTimeout(30); // set timeout to 30 sec.
             statement.executeUpdate(sql);
             statement.close();
             return "ok";
-        } catch(SQLException e) {
-            // if the error message is "out of memory", 
+        } catch (SQLException e) {
+            // if the error message is "out of memory",
             // it probably means no database file is found
             System.err.println(e.getMessage());
             return e.getMessage();
         } finally {
             try {
-                if(connection != null)
-                connection.close();
-            } catch(SQLException e) {
+                if (connection != null)
+                    connection.close();
+            } catch (SQLException e) {
                 // connection close failed.
                 System.err.println(e);
             }
@@ -43,25 +43,25 @@ public class Crud {
             // create a database connection
             connection = DriverManager.getConnection(URL);
             Statement statement = connection.createStatement();
-            statement.setQueryTimeout(30);  // set timeout to 30 sec.
+            statement.setQueryTimeout(30); // set timeout to 30 sec.
 
             ResultSet rs = statement.executeQuery("SELECT * FROM scores ORDER BY score DESC limit 10");
             List<Integer> scoreList = new ArrayList<>();
-            while(rs.next()){
+            while (rs.next()) {
                 scoreList.add(Integer.parseInt(rs.getString("score")));
             }
             return scoreList;
 
-        } catch(SQLException e) {
-            // if the error message is "out of memory", 
+        } catch (SQLException e) {
+            // if the error message is "out of memory",
             // it probably means no database file is found
             System.err.println(e.getMessage());
             return e.getMessage();
         } finally {
             try {
-                if(connection != null)
-                connection.close();
-            } catch(SQLException e) {
+                if (connection != null)
+                    connection.close();
+            } catch (SQLException e) {
                 // connection close failed.
                 System.err.println(e);
             }

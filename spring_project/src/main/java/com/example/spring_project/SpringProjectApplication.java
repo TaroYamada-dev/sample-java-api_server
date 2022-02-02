@@ -12,22 +12,21 @@ import com.example.spring_project.Crud;
 @SpringBootApplication
 @RestController
 public class SpringProjectApplication {
-	
+
 	@GetMapping("/get_score")
-    public Object getData() {
+	public Object getData() {
 		// Crud.getData();
-    	return Crud.getData();
-    }
+		return Crud.getData();
+	}
 
 	@PostMapping("/post_score")
-	public String postData(@RequestParam("score") Integer score){
+	public String postData(@RequestParam("score") Integer score) {
 		String result = Crud.insertData(score);
 		String str = "";
-		if(result == "ok"){
-			str = "{\"result\":\"ok\"}";
-		}
-		else{
-			str = "{\"result\":\"error\"}";
+		if (result == "ok") {
+			str = "{\"result\":\"ok\"}\n";
+		} else {
+			str = "{\"result\":\"error\"}\n";
 		}
 		return str;
 	}
